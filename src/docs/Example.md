@@ -13,7 +13,7 @@ into a Maven project, where they are used seamlessly as part of the normal build
 run will end up with the `<increment>` component being incremented each time,
 because the **build** goal will be run to completion before the **release** goal.
 
-Further, using _skip_ setting when it's available in a plugin is a good idea.  
+Further, using the _skip_ setting when it's available in a plugin is a good idea.
 So, when you know you don't want/need a plugin to do its thing, set it to `true`.
 
 **Note:** The code for this example was copied directly from this project's `pom.xml` 

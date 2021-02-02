@@ -6,7 +6,8 @@ title: ${document.title}
 
 # ${document.title}
 
-This is a Maven Plugin that provides Maven style version number incrementing.
+This is a Maven Plugin that provides a simple automated way of controlling the 
+"project.version" of a Maven project.
 
 There are three goals:
 

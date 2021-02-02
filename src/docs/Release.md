@@ -22,8 +22,8 @@ in the following table:
 As you can see, it does one of two things:
 
 1. If the current version is not of the form: `<major>.<minor>.<increment>`  
-   then it will append `.0` sequences to fill out the string, then remove the suffix:
-   `-SNAPSHOT` if it is there.
+   then it will append `.0` sequences to fill out the string. Then, if it is there,
+   remove the suffix: `-SNAPSHOT`.  However,
 2. If the current version is of the form: `<major>.<minor>.<increment>`  
    then it will do nothing.
 

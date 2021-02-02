@@ -19,13 +19,14 @@ in the following table:
 |`0.1.1`|`0.1.2-SNAPSHOT`|Yes|
 |`2`|`2.0.1-SNAPSHOT`|Yes|
 
-As you can see, it does one of three things:
+As you can see, it does one or more of the following three things:
 
-1. If the current version is not of the form: `<major>.<minor>.<increment>-SNAPSHOT`  
-   then it will append `.0` sequences to fill out the string, then append the suffix:
-   `-SNAPSHOT` if it is not already there.
-2. If the current version if of the form: `<major>.<minor>.<increment>`  
-   then it will increment the `<increment>` component and append the suffix: `-SNAPSHOT`.
+1. If the current version is not of the form: `<major>.<minor>.<increment>` or
+   `<major>.<minor>.<increment>-SNAPSHOT`  
+   then it will append `.0` sequences to fill out the string.  Then,
+2. If the current version is of the form: `<major>.<minor>.<increment>`  
+   then it will increment the `<increment>` component and append the suffix: 
+   `-SNAPSHOT`.  However,
 3. If the current version is of the form: `<major>.<minor>.<increment>-SNAPSHOT`  
    then it will do nothing.
 
