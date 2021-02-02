@@ -155,4 +155,4 @@ which could then be used like this:
 For more detailed information please refer to the manual under `./docs`.
 
 
-[sbmp]:https://github.com/bewillcott/simple-buildnumber-maven-plugin
+[sbmp]:https://bewillcott.github.io/bewsoftware-version-plugin/
