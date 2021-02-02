@@ -1,24 +1,19 @@
 @@@
 use : articles2
-title: ${document.title}
+title: ${document.title} | help
 @@@
 
 
-# ${document.title}
+## help goal
 
-This is a Maven Plugin that provides Maven style version number incrementing.
+The **help** goal is auto-generated as part of the Maven plugin build process.
 
-There are three goals:
-
-- build
-- release
-- help
 
 
 @@@[#navbar]
-- [@active] [Home](#)
+- [Home]
 - [build]
-- [help]
+- [@active] [help](#)
 - [release]
 - [@right] [About]
     - [License]

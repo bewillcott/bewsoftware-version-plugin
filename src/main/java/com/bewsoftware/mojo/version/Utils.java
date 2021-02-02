@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.bewsoftware.mojo.versioning;
+package com.bewsoftware.mojo.version;
 
 import com.bewsoftware.utils.struct.StringReturn;
 import java.io.File;
@@ -32,7 +32,6 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
-import static java.lang.String.format;
 import static java.util.regex.Pattern.compile;
 
 /**
@@ -149,6 +148,7 @@ public final class Utils {
         }
 
         projectVersion.val = output;
+        log.info("project.version: " + (!output.isBlank() ? output : oldVersion.val));
         log.debug("Exit: processPom()");
         return rtn;
     }
