@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.bewsoftware.mojo.versioning;
+package com.bewsoftware.mojo.version;
 
 /**
  * Version class is a 'struct' to transport the components of a version number

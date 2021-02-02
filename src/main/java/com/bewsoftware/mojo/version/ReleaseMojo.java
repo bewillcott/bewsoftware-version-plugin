@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.bewsoftware.mojo.versioning;
+package com.bewsoftware.mojo.version;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -109,7 +109,7 @@ import static org.apache.maven.plugins.annotations.LifecyclePhase.VALIDATE;
  */
 @Mojo(name = "release", defaultPhase = VALIDATE, requiresProject = true,
       threadSafe = false, executionStrategy = "once-per-session")
-public class ReleaseMojo extends AbstractVersioningMojo {
+public class ReleaseMojo extends AbstractVersionMojo {
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {

@@ -1,0 +1,45 @@
+@@@
+use : articles2
+title: ${document.title} | About
+@@@
+
+
+## About : v${document.version}
+
+    Copyright (C) 2021 Bradley Willcott
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+
+@@@[#navbar]
+- [Home]
+- [build]
+- [help]
+- [release]
+- [@right active] [About](#)
+    - [License]
+- [@right] [Example]
+- [@right] [Configuration]
+
+
+[About]:About.html
+[build]:Build.html
+[Configuration]:Configuration.html
+[help]:Help.html
+[Home]:index.html
+[release]:Release.html
+[License]:LICENSE.html
+[Example]:Example.html
+@@@

@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <help_text>fontsize=12
+fontfamily=Monospaced #SansSerif
+</help_text>
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>928</y>
+      <w>304</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>bg=cyan
+layer=1
+group=2
+/AbstractVersioningMojo/
+{abstract}
+--
+#project : MavenProject
+_#SUFFIX : String_ {final}
+-finalBaseNamePropertyName : String
+-skip : boolean
+
+--
+-setProperty(property:String, value:String): void
+
+-updateProjectVersion(
+    newVersion:StringReturn,
+    oldVersion:StringReturn
+ ): void
+
+#run(): boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>608</y>
+      <w>248</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+fontsize=16
+lw=2
+
+*bewsoftware-versioning-plugin*
+v1.0.0
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>448</x>
+      <y>664</y>
+      <w>232</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+
+Copyright © 2021, Bradley Willcott
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>184</x>
+      <y>704</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>/AbstractMojo/
+layer=1
+bg=light_gray
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>720</y>
+      <w>24</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;260.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>232</x>
+      <y>816</y>
+      <w>248</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>bg=green
+layer=1
+group=2
+&lt;&lt;interface&gt;&gt;
+Callback
+--
+--
+/+processVersion(version:Version): boolean/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>24</x>
+      <y>784</y>
+      <w>736</w>
+      <h>568</h>
+    </coordinates>
+    <panel_attributes>bg=orange
+group=2
+com.bewsoftware.mojo.versioning
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>144</x>
+      <y>672</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>org.apache.maven.plugin
+--
+bg=orange
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>344</x>
+      <y>872</y>
+      <w>24</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+group=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>576</x>
+      <y>1240</y>
+      <w>120</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>bg=gray
+layer=1
+group=2
+Version
+-
++major : String
++minor : String
++patch : String
++snapshot : String
++major : String
+-
++format() : String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>904</y>
+      <w>240</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>bg=#3c7a00
+layer=1
+group=2
+Utils
+{final}
+--
+_-FILE_NAME : String_ {final}
+_-MAVEN : String_ {final}
+
+--
+-Utils()
+
+_+processPom(_
+_    callback:Callback {final},_
+_    log:Log {final},_
+_    oldVersion:StringReturn {final},_
+_    projectVersion:StringReturn {final}_
+_) : boolean_
+
+_+ updateFinalName(_
+_    finalName:String {final},_
+_    oldVersion:String {final},_
+_    newVersion:String {final},_
+_    log:Log {final}_
+_) :  String_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>232</x>
+      <y>1224</y>
+      <w>168</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>bg=cyan
+transparency=0
+layer=1
+group=2
+Release
+-
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>1224</y>
+      <w>168</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>bg=cyan
+transparency=0
+layer=1
+group=2
+Build
+-
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>120</x>
+      <y>1112</y>
+      <w>24</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+group=2
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>312</x>
+      <y>1112</y>
+      <w>24</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+group=2
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>1152</y>
+      <w>32</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=*
+group=2
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>368</x>
+      <y>960</y>
+      <w>152</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=.
+group=2
+processPom() &gt;
+</panel_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>368</x>
+      <y>992</y>
+      <w>152</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=.
+group=2
+updateFinalName() &gt;
+</panel_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
+  </element>
+</diagram>

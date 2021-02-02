@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.bewsoftware.mojo.versioning;
+package com.bewsoftware.mojo.version;
 
 import com.bewsoftware.utils.struct.StringReturn;
 import org.apache.maven.plugin.AbstractMojo;
@@ -23,24 +23,30 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
-import static com.bewsoftware.mojo.versioning.Utils.updateFinalName;
-import static com.bewsoftware.mojo.versioning.Utils.processPom;
+import static com.bewsoftware.mojo.version.Utils.updateFinalName;
+import static com.bewsoftware.mojo.version.Utils.processPom;
 
 /**
- * AbstractVersioningMojo class is the parent of both of the classes:
- * {@link BuildMojo} and {@link ReleaseMojo}.
+ * AbstractVersionMojo class is the parent of both of the classes:
+ {@link BuildMojo} and {@link ReleaseMojo}.
  *
  * @author <a href="mailto:bw.opensource@yahoo.com">Bradley Willcott</a>
  *
  * @since 0.1
  * @version 0.1
  */
-public abstract class AbstractVersioningMojo extends AbstractMojo implements Callback {
+public abstract class AbstractVersionMojo extends AbstractMojo implements Callback {
 
     /**
      * Project version suffix.
      */
     protected static final String SUFFIX = "-SNAPSHOT";
+
+    /**
+     * Set the property name of the returned value for the final base filename string.
+     */
+    @Parameter
+    private String finalBaseNamePropertyName;
 
     /**
      * Whether or not to skip this execution.
@@ -51,30 +57,50 @@ public abstract class AbstractVersioningMojo extends AbstractMojo implements Cal
     /**
      * The maven project.
      */
-    @Parameter(property = "project", readonly = true, required = true)
-    protected MavenProject theProject;
+    @Parameter(defaultValue = "${project}", readonly = true, required = true)
+    protected MavenProject project;
+
+    /**
+     * Set pom property key/value pair.
+     *
+     * @param property name.
+     * @param value    text.
+     */
+    private void setProperty(String property, String value) {
+        if (value != null)
+        {
+            project.getProperties().setProperty(property, value);
+        }
+    }
 
     /**
      * Update "project.version".
      */
     private void updateProjectVersion(final StringReturn newVersion, final StringReturn oldVersion) {
 
-        getLog().debug("\n[OLD] project.artifact().getVersion(): " + theProject.getArtifact().getVersion());
-        theProject.getArtifact().selectVersion(newVersion.val);
-        getLog().debug("[NEW] project.artifact().getVersion(): " + theProject.getArtifact().getVersion() + "\n");
-        getLog().debug("[OLD] project.getModel().getVersion(): " + theProject.getModel().getVersion());
-        theProject.getModel().setVersion(newVersion.val);
-        getLog().debug("[NEW] project.getModel().getVersion(): " + theProject.getModel().getVersion() + "\n");
+        getLog().debug("\n[OLD] project.artifact().getVersion(): " + project.getArtifact().getVersion());
+        project.getArtifact().selectVersion(newVersion.val);
+        getLog().debug("[NEW] project.artifact().getVersion(): " + project.getArtifact().getVersion() + "\n");
+        getLog().debug("[OLD] project.getModel().getVersion(): " + project.getModel().getVersion());
+        project.getModel().setVersion(newVersion.val);
+        getLog().debug("[NEW] project.getModel().getVersion(): " + project.getModel().getVersion() + "\n");
 
         // Final name of files
-        getLog().debug("[OLD] theProject.getBuild().getFinalName(): " + theProject.getBuild().getFinalName());
+        getLog().debug("[OLD] theProject.getBuild().getFinalName(): " + project.getBuild().getFinalName());
 
         // Update /project/build/finalName.
-        theProject.getBuild().setFinalName(
-                updateFinalName(theProject.getBuild().getFinalName(),
-                                oldVersion.val, newVersion.val, getLog()));
+        String finalName = updateFinalName(project.getBuild().getFinalName(),
+                                           oldVersion.val, newVersion.val, getLog());
+        project.getBuild().setFinalName(finalName);
 
-        getLog().debug("[NEW] theProject.getBuild().getFinalName(): " + theProject.getBuild().getFinalName());
+        getLog().debug("[NEW] theProject.getBuild().getFinalName(): " + project.getBuild().getFinalName());
+
+        if (finalBaseNamePropertyName != null)
+        {
+            setProperty(finalBaseNamePropertyName, finalName);
+            getLog().debug("finalBaseNamePropertyName: " + finalBaseNamePropertyName);
+            getLog().debug("finalName: " + finalName);
+        }
     }
 
     /**
@@ -97,9 +123,9 @@ public abstract class AbstractVersioningMojo extends AbstractMojo implements Cal
             return false;
         }
 
-        if (theProject != null)
+        if (project != null)
         {
-            getLog().debug("\ntheProject: " + theProject.toString());
+            getLog().debug("\ntheProject: " + project.toString());
 
             final StringReturn oldVersion = new StringReturn();
             final StringReturn newVersion = new StringReturn();
@@ -112,5 +138,4 @@ public abstract class AbstractVersioningMojo extends AbstractMojo implements Cal
 
         return true;
     }
-
 }
