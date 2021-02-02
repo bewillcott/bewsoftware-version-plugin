@@ -1,9 +1,9 @@
 # bewsoftware-version-plugin
 
 **Note:**  
-This project is a derivation of, and replacement for, another of my projects:
-[simple-buildnumber-maven-plugin][sbmp].  All work on that project is therefore 
-now suspended.
+This project is a derivation of, and replacement for, another of my projects:  
+[simple-buildnumber-maven-plugin][sbmp].  
+All work on that project is therefore now suspended.
 
 ---
 
