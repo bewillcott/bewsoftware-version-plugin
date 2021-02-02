@@ -152,7 +152,8 @@ which could then be used like this:
 
 ## See also
 
-For more detailed information please refer to the manual under `./docs`.
+For more detailed information please refer to the [manual].
 
 
-[sbmp]:https://bewillcott.github.io/bewsoftware-version-plugin/
+[manual]:https://bewillcott.github.io/bewsoftware-version-plugin/
+[sbmp]:https://github.com/bewillcott/simple-buildnumber-maven-plugin
