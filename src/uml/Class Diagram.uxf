@@ -3,19 +3,19 @@
   <help_text>fontsize=12
 fontfamily=Monospaced #SansSerif
 </help_text>
-  <zoom_level>8</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
-      <y>928</y>
-      <w>304</w>
-      <h>192</h>
+      <x>60</x>
+      <y>440</y>
+      <w>380</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>bg=cyan
 layer=1
 group=2
-/AbstractVersioningMojo/
+/AbstractVersionMojo/
 {abstract}
 --
 #project : MavenProject
@@ -38,17 +38,17 @@ _#SUFFIX : String_ {final}
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>240</x>
-      <y>608</y>
-      <w>248</w>
-      <h>48</h>
+      <x>270</x>
+      <y>40</y>
+      <w>310</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>valign=center
 halign=center
 fontsize=16
 lw=2
 
-*bewsoftware-versioning-plugin*
+*bewsoftware-version-plugin*
 v1.0.0
 </panel_attributes>
     <additional_attributes/>
@@ -56,10 +56,10 @@ v1.0.0
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>448</x>
-      <y>664</y>
-      <w>232</w>
-      <h>40</h>
+      <x>530</x>
+      <y>110</y>
+      <w>290</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>valign=center
 halign=center
@@ -71,10 +71,10 @@ Copyright © 2021, Bradley Willcott
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>184</x>
-      <y>704</y>
-      <w>80</w>
-      <h>24</h>
+      <x>200</x>
+      <y>160</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>/AbstractMojo/
 layer=1
@@ -85,10 +85,10 @@ group=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>216</x>
-      <y>720</y>
-      <w>24</w>
-      <h>224</h>
+      <x>240</x>
+      <y>180</y>
+      <w>30</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;260.0</additional_attributes>
@@ -96,10 +96,10 @@ group=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>232</x>
-      <y>816</y>
-      <w>248</w>
-      <h>64</h>
+      <x>260</x>
+      <y>300</y>
+      <w>310</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>bg=green
 layer=1
@@ -115,14 +115,14 @@ Callback
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>24</x>
-      <y>784</y>
-      <w>736</w>
-      <h>568</h>
+      <x>0</x>
+      <y>260</y>
+      <w>920</w>
+      <h>710</h>
     </coordinates>
     <panel_attributes>bg=orange
 group=2
-com.bewsoftware.mojo.versioning
+com.bewsoftware.mojo.version
 --
 </panel_attributes>
     <additional_attributes/>
@@ -130,10 +130,10 @@ com.bewsoftware.mojo.versioning
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>144</x>
-      <y>672</y>
-      <w>160</w>
-      <h>80</h>
+      <x>150</x>
+      <y>120</y>
+      <w>200</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>org.apache.maven.plugin
 --
@@ -144,10 +144,10 @@ group=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>344</x>
-      <y>872</y>
-      <w>24</w>
-      <h>72</h>
+      <x>400</x>
+      <y>370</y>
+      <w>30</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 group=2</panel_attributes>
@@ -156,10 +156,10 @@ group=2</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>576</x>
-      <y>1240</y>
-      <w>120</w>
-      <h>96</h>
+      <x>690</x>
+      <y>830</y>
+      <w>150</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>bg=gray
 layer=1
@@ -179,10 +179,10 @@ Version
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>904</y>
-      <w>240</w>
-      <h>256</h>
+      <x>600</x>
+      <y>410</y>
+      <w>300</w>
+      <h>320</h>
     </coordinates>
     <panel_attributes>bg=#3c7a00
 layer=1
@@ -214,10 +214,10 @@ _) :  String_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>232</x>
-      <y>1224</y>
-      <w>168</w>
-      <h>32</h>
+      <x>260</x>
+      <y>810</y>
+      <w>210</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>bg=cyan
 transparency=0
@@ -232,10 +232,10 @@ Release
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>40</x>
-      <y>1224</y>
-      <w>168</w>
-      <h>32</h>
+      <x>20</x>
+      <y>810</y>
+      <w>210</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>bg=cyan
 transparency=0
@@ -251,9 +251,9 @@ Build
     <id>Relation</id>
     <coordinates>
       <x>120</x>
-      <y>1112</y>
-      <w>24</w>
-      <h>128</h>
+      <y>670</y>
+      <w>30</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 group=2
@@ -263,10 +263,10 @@ group=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>312</x>
-      <y>1112</y>
-      <w>24</w>
-      <h>128</h>
+      <x>360</x>
+      <y>670</y>
+      <w>30</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 group=2
@@ -276,10 +276,10 @@ group=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>1152</y>
-      <w>32</w>
-      <h>104</h>
+      <x>750</x>
+      <y>720</y>
+      <w>40</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
@@ -291,10 +291,10 @@ group=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>368</x>
-      <y>960</y>
-      <w>152</w>
-      <h>32</h>
+      <x>430</x>
+      <y>480</y>
+      <w>190</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 group=2
@@ -305,10 +305,10 @@ processPom() &gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>368</x>
-      <y>992</y>
-      <w>152</w>
-      <h>32</h>
+      <x>430</x>
+      <y>520</y>
+      <w>190</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
 group=2
