@@ -4,7 +4,7 @@ title: ${document.title} | About
 @@@
 
 
-## About : v${document.version}
+## About : v${project.version}
 
     Copyright (C) 2021 Bradley Willcott
 
