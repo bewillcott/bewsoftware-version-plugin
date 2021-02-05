@@ -28,7 +28,7 @@ import static com.bewsoftware.mojo.version.Utils.processPom;
 
 /**
  * AbstractVersionMojo class is the parent of both of the classes:
- {@link BuildMojo} and {@link ReleaseMojo}.
+ * {@link BuildMojo} and {@link ReleaseMojo}.
  *
  * @author <a href="mailto:bw.opensource@yahoo.com">Bradley Willcott</a>
  *
@@ -61,6 +61,11 @@ public abstract class AbstractVersionMojo extends AbstractMojo implements Callba
     protected MavenProject project;
 
     /**
+     * Stores returned final name of the file (excluding extension: ".jar").
+     */
+    private String finalName;
+
+    /**
      * Set pom property key/value pair.
      *
      * @param property name.
@@ -89,18 +94,11 @@ public abstract class AbstractVersionMojo extends AbstractMojo implements Callba
         getLog().debug("[OLD] theProject.getBuild().getFinalName(): " + project.getBuild().getFinalName());
 
         // Update /project/build/finalName.
-        String finalName = updateFinalName(project.getBuild().getFinalName(),
-                                           oldVersion.val, newVersion.val, getLog());
+        finalName = updateFinalName(finalName,
+                                    oldVersion.val, newVersion.val, getLog());
         project.getBuild().setFinalName(finalName);
 
         getLog().debug("[NEW] theProject.getBuild().getFinalName(): " + project.getBuild().getFinalName());
-
-        if (finalBaseNamePropertyName != null)
-        {
-            setProperty(finalBaseNamePropertyName, finalName);
-            getLog().debug("finalBaseNamePropertyName: " + finalBaseNamePropertyName);
-            getLog().debug("finalName: " + finalName);
-        }
     }
 
     /**
@@ -125,7 +123,8 @@ public abstract class AbstractVersionMojo extends AbstractMojo implements Callba
 
         if (project != null)
         {
-            getLog().debug("\ntheProject: " + project.toString());
+            finalName = project.getBuild().getFinalName();
+            getLog().debug("\nproject: " + project.toString());
 
             final StringReturn oldVersion = new StringReturn();
             final StringReturn newVersion = new StringReturn();
@@ -134,8 +133,16 @@ public abstract class AbstractVersionMojo extends AbstractMojo implements Callba
             {
                 updateProjectVersion(newVersion, oldVersion);
             }
-        }
 
+            getLog().debug("finalBaseNamePropertyName: " + finalBaseNamePropertyName);
+
+            if (finalBaseNamePropertyName != null)
+            {
+                setProperty(finalBaseNamePropertyName, finalName);
+                getLog().debug("finalBaseNamePropertyName: " + finalBaseNamePropertyName);
+                getLog().debug("finalName: " + finalName);
+            }
+        }
         return true;
     }
 }
