@@ -1,5 +1,8 @@
 /*
- * Copyright (C) 2021 Bradley Willcott
+ * 'bewsoftware-version-plugin' provides Maven style version number
+ * incrementing.
+ *
+ * Copyright (C) 2021 Bradley Willcott <mailto:bw.opensource@yahoo.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

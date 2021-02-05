@@ -1,7 +1,10 @@
 <#if licenseFirst??>
 ${licenseFirst}
 </#if>
-${licensePrefix}Copyright (C) ${date?date?string("yyyy")} Bradley Willcott
+${licensePrefix}'bewsoftware-version-plugin' provides Maven style version number
+${licensePrefix}incrementing.
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}Copyright (C) 2021 Bradley Willcott <mailto:bw.opensource@yahoo.com>
 ${licensePrefix?replace(" +$", "", "r")}
 ${licensePrefix}This program is free software: you can redistribute it and/or modify
 ${licensePrefix}it under the terms of the GNU General Public License as published by
