@@ -26,7 +26,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import static org.apache.maven.plugins.annotations.LifecyclePhase.VALIDATE;
 
 /**
- * BuildMojo class updates the project.version text, possibly incrementing the
+ * BuildMojo class updates the {@code project.version} text, possibly incrementing the
  * patch level.
  * <p>
  * The format is: &lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;-SNAPSHOT<br>
@@ -34,13 +34,13 @@ import static org.apache.maven.plugins.annotations.LifecyclePhase.VALIDATE;
  * <p>
  * The conditional processing logic is as follows:
  * <ul>
- * <li>If '.&lt;minor&gt;' is missing then &lt;minor&gt; is set to: '0'</li>
- * <li>If '.&lt;patch&gt;' is missing then &lt;patch&gt; is set to: '0'</li>
+ * <li>If '.&lt;minor&gt;' is missing then &lt;minor&gt; is set to: '0'
+ * <li>If '.&lt;patch&gt;' is missing then &lt;patch&gt; is set to: '0'
  * <li>If '-SNAPSHOT' is missing, then
  * <ul>
- * <li>&lt;patch&gt; is incremented</li>
- * <li>and '-SNAPSHOT' is appended</li>
- * </ul></li>
+ * <li>&lt;patch&gt; is incremented
+ * <li>and '-SNAPSHOT' is appended
+ * </ul>
  * </ul><br>
  * <table style="border: 2px solid black;border-collapse: collapse;padding: 5px">
  * <caption style="border-left: 2px solid black;border-top: 2px solid black;border-right: 2px solid black;padding: 5px">
@@ -112,7 +112,7 @@ import static org.apache.maven.plugins.annotations.LifecyclePhase.VALIDATE;
  * @author <a href="mailto:bw.opensource@yahoo.com">Bradley Willcott</a>
  *
  * @since 0.1
- * @version 0.1
+ * @version 1.0.2
  */
 @Mojo(name = "build", defaultPhase = VALIDATE, requiresProject = true,
       threadSafe = false, executionStrategy = "once-per-session")
@@ -127,7 +127,7 @@ public class BuildMojo extends AbstractVersionMojo {
     }
 
     @Override
-    public boolean processVersion(Version version) {
+    public boolean processVersion(final Version version) {
 
         boolean changed = false;
 

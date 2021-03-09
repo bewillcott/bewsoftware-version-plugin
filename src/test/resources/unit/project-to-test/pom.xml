@@ -5,7 +5,7 @@
     <groupId>com.bewsoftware.test.unit</groupId>
     <artifactId>bvp-project-to-test</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.8</version>
+    <version>2.0.12-SNAPSHOT</version>
     
     <name>Test bewsoftware-versioning-plugin</name>
     
@@ -492,7 +492,7 @@
                 <plugin>
                     <groupId>com.bewsoftware.mojo</groupId>
                     <artifactId>bewsoftware-version-plugin</artifactId>
-                    <version>1.0.1</version>
+                    <version>1.0.2-SNAPSHOT</version>
                 </plugin>
                 <plugin>
                     <groupId>com.bewsoftware.mojo</groupId>
