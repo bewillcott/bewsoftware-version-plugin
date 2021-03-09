@@ -26,8 +26,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import static org.apache.maven.plugins.annotations.LifecyclePhase.VALIDATE;
 
 /**
- * ReleaseMojo class updates the project.version text, possibly incrementing the
- * patch level.
+ * ReleaseMojo class updates the {@code project.version} text, removing "-SNAPSHOT".
  * <p>
  * The format is: &lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;-SNAPSHOT<br>
  * Example: {@code 0.1.0-SNAPSHOT}
@@ -108,7 +107,7 @@ import static org.apache.maven.plugins.annotations.LifecyclePhase.VALIDATE;
  * @author <a href="mailto:bw.opensource@yahoo.com">Bradley Willcott</a>
  *
  * @since 0.1
- * @version 0.1.0
+ * @version 1.0.2
  */
 @Mojo(name = "release", defaultPhase = VALIDATE, requiresProject = true,
       threadSafe = false, executionStrategy = "once-per-session")
@@ -123,7 +122,7 @@ public class ReleaseMojo extends AbstractVersionMojo {
     }
 
     @Override
-    public boolean processVersion(Version version) {
+    public boolean processVersion(final Version version) {
 
         boolean change = false;
 

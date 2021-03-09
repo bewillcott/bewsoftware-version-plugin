@@ -26,8 +26,8 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
-import static com.bewsoftware.mojo.version.Utils.updateFinalName;
 import static com.bewsoftware.mojo.version.Utils.processPom;
+import static com.bewsoftware.mojo.version.Utils.updateProjectVersion;
 
 /**
  * AbstractVersionMojo class is the parent of both of the classes:
@@ -36,7 +36,7 @@ import static com.bewsoftware.mojo.version.Utils.processPom;
  * @author <a href="mailto:bw.opensource@yahoo.com">Bradley Willcott</a>
  *
  * @since 0.1
- * @version 0.1
+ * @version 1.0.2
  */
 public abstract class AbstractVersionMojo extends AbstractMojo implements Callback {
 
@@ -64,11 +64,6 @@ public abstract class AbstractVersionMojo extends AbstractMojo implements Callba
     protected MavenProject project;
 
     /**
-     * Stores returned final name of the file (excluding extension: ".jar").
-     */
-    private String finalName;
-
-    /**
      * Set pom property key/value pair.
      *
      * @param property name.
@@ -79,29 +74,6 @@ public abstract class AbstractVersionMojo extends AbstractMojo implements Callba
         {
             project.getProperties().setProperty(property, value);
         }
-    }
-
-    /**
-     * Update "project.version".
-     */
-    private void updateProjectVersion(final StringReturn newVersion, final StringReturn oldVersion) {
-
-        getLog().debug("\n[OLD] project.artifact().getVersion(): " + project.getArtifact().getVersion());
-        project.getArtifact().selectVersion(newVersion.val);
-        getLog().debug("[NEW] project.artifact().getVersion(): " + project.getArtifact().getVersion() + "\n");
-        getLog().debug("[OLD] project.getModel().getVersion(): " + project.getModel().getVersion());
-        project.getModel().setVersion(newVersion.val);
-        getLog().debug("[NEW] project.getModel().getVersion(): " + project.getModel().getVersion() + "\n");
-
-        // Final name of files
-        getLog().debug("[OLD] theProject.getBuild().getFinalName(): " + project.getBuild().getFinalName());
-
-        // Update /project/build/finalName.
-        finalName = updateFinalName(finalName,
-                                    oldVersion.val, newVersion.val, getLog());
-        project.getBuild().setFinalName(finalName);
-
-        getLog().debug("[NEW] theProject.getBuild().getFinalName(): " + project.getBuild().getFinalName());
     }
 
     /**
@@ -126,26 +98,27 @@ public abstract class AbstractVersionMojo extends AbstractMojo implements Callba
 
         if (project != null)
         {
-            finalName = project.getBuild().getFinalName();
-            getLog().debug("\nproject: " + project.toString());
-
+            final StringReturn finalName = new StringReturn();
             final StringReturn oldVersion = new StringReturn();
             final StringReturn newVersion = new StringReturn();
 
+            finalName.val = project.getBuild().getFinalName();
+            getLog().debug("\nproject: " + project.toString());
+
             if (processPom(this, getLog(), oldVersion, newVersion))
             {
-                updateProjectVersion(newVersion, oldVersion);
+                updateProjectVersion(project, getLog(), oldVersion, newVersion, finalName);
             }
 
             getLog().debug("finalBaseNamePropertyName: " + finalBaseNamePropertyName);
 
             if (finalBaseNamePropertyName != null)
             {
-                setProperty(finalBaseNamePropertyName, finalName);
-                getLog().debug("finalBaseNamePropertyName: " + finalBaseNamePropertyName);
+                setProperty(finalBaseNamePropertyName, finalName.val);
                 getLog().debug("finalName: " + finalName);
             }
         }
+
         return true;
     }
 }

@@ -8,13 +8,12 @@ fontfamily=Monospaced #SansSerif
     <id>UMLClass</id>
     <coordinates>
       <x>60</x>
-      <y>440</y>
+      <y>480</y>
       <w>380</w>
       <h>240</h>
     </coordinates>
     <panel_attributes>bg=cyan
 layer=1
-group=2
 /AbstractVersionMojo/
 {abstract}
 --
@@ -39,7 +38,7 @@ _#SUFFIX : String_ {final}
     <id>UMLClass</id>
     <coordinates>
       <x>270</x>
-      <y>40</y>
+      <y>80</y>
       <w>310</w>
       <h>60</h>
     </coordinates>
@@ -57,14 +56,14 @@ v1.0.0
     <id>UMLClass</id>
     <coordinates>
       <x>530</x>
-      <y>110</y>
+      <y>150</y>
       <w>290</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>valign=center
 halign=center
 
-Copyright © 2021, Bradley Willcott
+Copyright © 2021 Bradley Willcott
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -72,7 +71,7 @@ Copyright © 2021, Bradley Willcott
     <id>UMLClass</id>
     <coordinates>
       <x>200</x>
-      <y>160</y>
+      <y>200</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -86,24 +85,25 @@ group=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>240</x>
-      <y>180</y>
+      <y>220</y>
       <w>30</w>
       <h>280</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;&lt;-
+layer=1
+</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;260.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>260</x>
-      <y>300</y>
+      <y>340</y>
       <w>310</w>
       <h>80</h>
     </coordinates>
     <panel_attributes>bg=green
 layer=1
-group=2
 &lt;&lt;interface&gt;&gt;
 Callback
 --
@@ -116,12 +116,11 @@ Callback
     <id>UMLPackage</id>
     <coordinates>
       <x>0</x>
-      <y>260</y>
+      <y>300</y>
       <w>920</w>
       <h>710</h>
     </coordinates>
     <panel_attributes>bg=orange
-group=2
 com.bewsoftware.mojo.version
 --
 </panel_attributes>
@@ -131,7 +130,7 @@ com.bewsoftware.mojo.version
     <id>UMLPackage</id>
     <coordinates>
       <x>150</x>
-      <y>120</y>
+      <y>160</y>
       <w>200</w>
       <h>100</h>
     </coordinates>
@@ -145,25 +144,25 @@ group=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>400</x>
-      <y>370</y>
+      <y>410</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-group=2</panel_attributes>
+layer=1
+</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>690</x>
-      <y>830</y>
+      <y>870</y>
       <w>150</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>bg=gray
 layer=1
-group=2
 Version
 -
 +major : String
@@ -180,13 +179,12 @@ Version
     <id>UMLClass</id>
     <coordinates>
       <x>600</x>
-      <y>410</y>
+      <y>450</y>
       <w>300</w>
       <h>320</h>
     </coordinates>
     <panel_attributes>bg=#3c7a00
 layer=1
-group=2
 Utils
 {final}
 --
@@ -215,14 +213,13 @@ _) :  String_</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>260</x>
-      <y>810</y>
+      <y>850</y>
       <w>210</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>bg=cyan
 transparency=0
 layer=1
-group=2
 Release
 -
 -
@@ -233,14 +230,13 @@ Release
     <id>UMLClass</id>
     <coordinates>
       <x>20</x>
-      <y>810</y>
+      <y>850</y>
       <w>210</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>bg=cyan
 transparency=0
 layer=1
-group=2
 Build
 -
 -
@@ -251,12 +247,13 @@ Build
     <id>Relation</id>
     <coordinates>
       <x>120</x>
-      <y>670</y>
+      <y>710</y>
       <w>30</w>
       <h>160</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-group=2
+    <panel_attributes>lt=&lt;&lt;-
+layer=1
+
 </panel_attributes>
     <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
   </element>
@@ -264,12 +261,13 @@ group=2
     <id>Relation</id>
     <coordinates>
       <x>360</x>
-      <y>670</y>
+      <y>710</y>
       <w>30</w>
       <h>160</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-group=2
+    <panel_attributes>lt=&lt;&lt;-
+layer=1
+
 </panel_attributes>
     <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
   </element>
@@ -277,30 +275,17 @@ group=2
     <id>Relation</id>
     <coordinates>
       <x>750</x>
-      <y>720</y>
+      <y>760</y>
       <w>40</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
 m2=*
-group=2
+layer=1
+
 </panel_attributes>
     <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>430</x>
-      <y>480</y>
-      <w>190</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=.
-group=2
-processPom() &gt;
-</panel_attributes>
-    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -311,8 +296,23 @@ processPom() &gt;
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=.
-group=2
+processPom() &gt;
+layer=1
+</panel_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>560</y>
+      <w>190</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.
 updateFinalName() &gt;
+layer=1
+
 </panel_attributes>
     <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
   </element>

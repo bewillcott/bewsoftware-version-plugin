@@ -29,6 +29,7 @@ import java.util.regex.Pattern;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.Log;
+import org.apache.maven.project.MavenProject;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -38,12 +39,12 @@ import org.dom4j.io.XMLWriter;
 import static java.util.regex.Pattern.compile;
 
 /**
- * Utils class description.
+ * This class contain static helper methods.
  *
  * @author <a href="mailto:bw.opensource@yahoo.com">Bradley Willcott</a>
  *
  * @since 0.1
- * @version 0.1
+ * @version 1.0.2
  */
 public final class Utils {
 
@@ -157,17 +158,51 @@ public final class Utils {
     }
 
     /**
+     * Update "project.version".
+     *
+     * @param project    the Maven project
+     * @param log        the Maven plugin logging instance
+     * @param oldVersion old version text
+     * @param newVersion new version text
+     * @param finalName  /build/finalName text
+     */
+    public static void updateProjectVersion(final MavenProject project, final Log log,
+                                            final StringReturn oldVersion,
+                                            final StringReturn newVersion,
+                                            final StringReturn finalName
+    ) {
+
+        log.debug("\n[OLD] project.artifact().getVersion(): " + project.getArtifact().getVersion());
+        project.getArtifact().selectVersion(newVersion.val);
+        log.debug("[NEW] project.artifact().getVersion(): " + project.getArtifact().getVersion() + "\n");
+        log.debug("[OLD] project.getModel().getVersion(): " + project.getModel().getVersion());
+        project.getModel().setVersion(newVersion.val);
+        log.debug("[NEW] project.getModel().getVersion(): " + project.getModel().getVersion() + "\n");
+
+        // Final name of files
+        log.debug("[OLD] theProject.getBuild().getFinalName(): " + project.getBuild().getFinalName());
+
+        // Update /project/build/finalName.
+        updateFinalName(finalName, oldVersion, newVersion, log);
+        project.getBuild().setFinalName(finalName.val);
+
+        log.debug("[NEW] theProject.getBuild().getFinalName(): " + project.getBuild().getFinalName());
+    }
+
+    /**
      * Update the /project/build/finalName.
+     * <p>
+     * Updated text returned in {@code finalName}.
      *
      * @param finalName  Current text.
      * @param oldVersion Old version text.
      * @param newVersion New version text.
      * @param log        Maven logging.
-     *
-     * @return new finalName text.
      */
-    public static String updateFinalName(final String finalName, final String oldVersion,
-                                         final String newVersion, final Log log) {
+    public static void updateFinalName(final StringReturn finalName,
+                                       final StringReturn oldVersion,
+                                       final StringReturn newVersion,
+                                       final Log log) {
 
         log.debug("Entry: updateFinalName()");
         log.debug("projectVersion: " + newVersion);
@@ -176,11 +211,11 @@ public final class Utils {
         StringBuilder sb = new StringBuilder();
 
         Pattern p = Pattern.compile(regex);
-        Matcher m = p.matcher(finalName);
+        Matcher m = p.matcher(finalName.val);
 
         if (m.find())
         {
-            m.appendReplacement(sb, newVersion);
+            m.appendReplacement(sb, newVersion.val);
         } else
         {
             log.warn("WARNING: project.build.finalName - Not Updated");
@@ -190,7 +225,7 @@ public final class Utils {
         log.debug("sb:\n" + sb);
 
         log.debug("Exit: updateFinalName()");
-        return sb.toString();
+        finalName.val = sb.toString();
     }
 
     /**
