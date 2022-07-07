@@ -28,6 +28,7 @@ package com.bewsoftware.mojo.version;
  * @since 0.1
  * @version 0.1
  */
+@SuppressWarnings("PublicField")
 public class Version {
 
     /**

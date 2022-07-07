@@ -121,12 +121,13 @@ public class BuildMojo extends AbstractVersionMojo {
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
 
-        getLog().debug("Entry: execute()");
+        DISPLAY.level(2).println("Entry: execute()");
         run();
-        getLog().debug("Exit: execute()");
+        DISPLAY.level(2).println("Exit: execute()");
     }
 
     @Override
+    @SuppressWarnings("ValueOfIncrementOrDecrementUsed")
     public boolean processVersion(final Version version) {
 
         boolean changed = false;

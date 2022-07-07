@@ -2,7 +2,7 @@
  * 'bewsoftware-version-plugin' provides Maven style version number
  * incrementing.
  *
- * Copyright (C) 2021 Bradley Willcott <mailto:bw.opensource@yahoo.com>
+ * Copyright (C) 2021-2022 Bradley Willcott <mailto:bw.opensource@yahoo.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,9 @@
  */
 package com.bewsoftware.mojo.version;
 
-import com.bewsoftware.utils.struct.StringReturn;
+import com.bewsoftware.utils.io.ConsoleIO;
+import com.bewsoftware.utils.io.Display;
+import com.bewsoftware.utils.struct.Ref;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -36,9 +38,12 @@ import static com.bewsoftware.mojo.version.Utils.updateProjectVersion;
  * @author <a href="mailto:bw.opensource@yahoo.com">Bradley Willcott</a>
  *
  * @since 0.1
- * @version 1.0.2
+ * @version 1.1.0
  */
-public abstract class AbstractVersionMojo extends AbstractMojo implements Callback {
+@SuppressWarnings("ProtectedField")
+public abstract class AbstractVersionMojo extends AbstractMojo implements Callback
+{
+    public static final Display DISPLAY = ConsoleIO.consoleDisplay("");
 
     /**
      * Project version suffix.
@@ -46,7 +51,8 @@ public abstract class AbstractVersionMojo extends AbstractMojo implements Callba
     protected static final String SUFFIX = "-SNAPSHOT";
 
     /**
-     * Set the property name of the returned value for the final base filename string.
+     * Set the property name of the returned value for the final base filename
+     * string.
      */
     @Parameter
     private String finalBaseNamePropertyName;
@@ -56,6 +62,17 @@ public abstract class AbstractVersionMojo extends AbstractMojo implements Callba
      */
     @Parameter(defaultValue = "false")
     private boolean skip;
+
+    /**
+     * Set the level of verbosity.
+     * <ul>
+     * <li>'0' is off.</li>
+     * <li>'1' - '3' are active levels, from limited
+     * information to a lot of information.</li>
+     * </ul>
+     */
+    @Parameter(defaultValue = "0")
+    private int verbosity;
 
     /**
      * The maven project.
@@ -69,7 +86,8 @@ public abstract class AbstractVersionMojo extends AbstractMojo implements Callba
      * @param property name.
      * @param value    text.
      */
-    private void setProperty(String property, String value) {
+    private void setProperty(String property, String value)
+    {
         if (value != null)
         {
             project.getProperties().setProperty(property, value);
@@ -86,37 +104,47 @@ public abstract class AbstractVersionMojo extends AbstractMojo implements Callba
      * @throws MojoFailureException   if any.
      * @throws MojoExecutionException if any.
      */
-    protected boolean run() throws MojoFailureException, MojoExecutionException {
-        getLog().info("BEWSoftware Versioning Maven Plugin");
-        getLog().info("===================================");
+    protected boolean run() throws MojoFailureException, MojoExecutionException
+    {
+        if (verbosity > 0)
+        {
+            DISPLAY.debugLevel(verbosity);
+            Utils.setVerbosity(verbosity);
+        }
+
+        DISPLAY.level(0).appendln("BEWSoftware Versioning Maven Plugin");
+        DISPLAY.level(0).println("===================================");
+        DISPLAY.level(1).println("\nverbosity: " + verbosity);
 
         if (skip)
         {
-            getLog().info("\nSkipping execution.");
+            DISPLAY.level(0).println("\nSkipping execution.");
             return false;
         }
 
         if (project != null)
         {
-            final StringReturn finalName = new StringReturn();
-            final StringReturn oldVersion = new StringReturn();
-            final StringReturn newVersion = new StringReturn();
+            final Ref<String> finalName = Ref.val();
+            final Ref<String> oldVersion = Ref.val();
+            final Ref<String> newVersion = Ref.val();
 
             finalName.val = project.getBuild().getFinalName();
-            getLog().debug("\nproject: " + project.toString());
+            DISPLAY.level(1).println("\nproject: " + project.toString());
 
-            if (processPom(this, getLog(), oldVersion, newVersion))
+            if (processPom(this, oldVersion, newVersion))
             {
-                updateProjectVersion(project, getLog(), oldVersion, newVersion, finalName);
+                updateProjectVersion(project, oldVersion, newVersion, finalName);
             }
 
-            getLog().debug("finalBaseNamePropertyName: " + finalBaseNamePropertyName);
+            DISPLAY.level(1).println("finalBaseNamePropertyName: " + finalBaseNamePropertyName);
 
             if (finalBaseNamePropertyName != null)
             {
                 setProperty(finalBaseNamePropertyName, finalName.val);
-                getLog().debug("finalName: " + finalName);
+                DISPLAY.level(1).println("finalName: " + finalName);
             }
+
+            DISPLAY.level(0).println("\nVersion: " + newVersion.val);
         }
 
         return true;

@@ -1,3 +1,7 @@
 /target/
 /nbproject/
 /src/test/resources/unit/project-to-test/target/
+/src/test/resources/unit/test-modular-project/module_two/target/
+/src/test/resources/unit/test-modular-project/module_one/target/
+/src/test/resources/unit/test-modular-project/POM/target/
+/src/test/resources/unit/test-modular-project/target/

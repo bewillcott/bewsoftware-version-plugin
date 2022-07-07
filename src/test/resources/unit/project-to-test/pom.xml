@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <groupId>com.bewsoftware.test.unit</groupId>
     <artifactId>bvp-project-to-test</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.13</version>
-    
+    <version>2.0.15-SNAPSHOT</version>
+
     <name>Test bewsoftware-versioning-plugin</name>
-    
+
     <properties>
-        <java.version>12</java.version>
+        <java.version>18</java.version>
         <source.encoding>UTF-8</source.encoding>
         <javadoc.source.version>${java.version}</javadoc.source.version>
         <jdk.version>${java.version}</jdk.version>
@@ -28,8 +28,8 @@
             <id>help</id>
             <build>
                 <plugins>
-                    <!--Display plugin help--> 
-                    <plugin>                    
+                    <!--Display plugin help-->
+                    <plugin>
                         <groupId>com.bewsoftware.mojo</groupId>
                         <artifactId>bewsoftware-versioning-plugin</artifactId>
                         <executions>
@@ -69,7 +69,7 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>    
+        </profile>
 
         <profile>
             <id>manual-compile</id>
@@ -94,7 +94,7 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>    
+        </profile>
 
         <profile>
             <id>manual-clean-compile</id>
@@ -121,7 +121,7 @@
                 </plugins>
             </build>
         </profile>
-        
+
         <profile>
             <id>manual-display-mdj</id>
             <build>
@@ -154,11 +154,11 @@
                             <execution>
                                 <id>MDj-Publish-Manual</id>
                                 <goals>
-                                    <goal>mdj</goal>                                    
+                                    <goal>mdj</goal>
                                     <goal>publish</goal>
                                 </goals>
-                                <configuration>                                     
-                                    <disallowBrowserFileCaching>true</disallowBrowserFileCaching>                                   
+                                <configuration>
+                                    <disallowBrowserFileCaching>true</disallowBrowserFileCaching>
                                     <source>src/docs/manual</source>
                                     <destination>target/docs/manual</destination>
                                     <serverContexts>
@@ -182,7 +182,7 @@
                 </plugins>
             </build>
         </profile>
-        
+
         <profile>
             <id>manual-publish</id>
             <build>
@@ -194,10 +194,10 @@
                             <execution>
                                 <id>MDj-Publish-Manual</id>
                                 <goals>
-                                    <goal>mdj</goal>                                    
+                                    <goal>mdj</goal>
                                     <goal>publish</goal>
                                 </goals>
-                                <configuration>                                    
+                                <configuration>
                                     <disallowBrowserFileCaching>true</disallowBrowserFileCaching>
                                     <source>src/docs/manual</source>
                                     <destination>target/docs/manual</destination>
@@ -214,7 +214,7 @@
                 </plugins>
             </build>
         </profile>
-        
+
         <profile>
             <id>manual-clean-publish</id>
             <build>
@@ -227,10 +227,10 @@
                                 <id>MDj-Clean-Publish-Manual</id>
                                 <goals>
                                     <goal>clean</goal>
-                                    <goal>mdj</goal>                            
+                                    <goal>mdj</goal>
                                     <goal>publish</goal>
                                 </goals>
-                                <configuration>                                    
+                                <configuration>
                                     <disallowBrowserFileCaching>true</disallowBrowserFileCaching>
                                     <source>src/docs/manual</source>
                                     <destination>target/docs/manual</destination>
@@ -247,7 +247,7 @@
                 </plugins>
             </build>
         </profile>
-        
+
         <profile>
             <id>publish-api</id>
             <build>
@@ -320,7 +320,7 @@
                 </plugins>
             </build>
         </profile>
-        
+
         <profile>
             <id>release-profile</id>
             <properties>
@@ -328,7 +328,7 @@
             </properties>
             <build>
                 <plugins>
-                    <plugin>                    
+                    <plugin>
                         <groupId>com.bewsoftware.mojo</groupId>
                         <artifactId>bewsoftware-version-plugin</artifactId>
                         <executions>
@@ -407,7 +407,7 @@
                                         <argument>${finalBaseName}-manual.jar</argument>
                                         <argument>${finalBaseName}-manual-src.jar</argument>
                                         <!--<argument>libs</argument>-->
-                                    </arguments> 
+                                    </arguments>
                                 </configuration>
                             </execution>
                         </executions>
@@ -417,7 +417,7 @@
                         <artifactId>maven-install-plugin</artifactId>
                         <executions>
                             <execution>
-                                <id>manual</id>                                    
+                                <id>manual</id>
                                 <phase>install</phase>
                                 <goals>
                                     <goal>install-file</goal>
@@ -447,7 +447,7 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>          
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
@@ -459,8 +459,8 @@
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>                       
-                    <plugin>                
+                    </plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-site-plugin</artifactId>
                         <executions>
@@ -471,13 +471,12 @@
                                     <goal>jar</goal>
                                 </goals>
                             </execution>
-                        </executions>       
+                        </executions>
                     </plugin>
-         
                 </plugins>
             </build>
         </profile>
-        
+
         <profile>
             <id>test</id>
             <properties>
@@ -492,22 +491,22 @@
                 <plugin>
                     <groupId>com.bewsoftware.mojo</groupId>
                     <artifactId>bewsoftware-version-plugin</artifactId>
-                    <version>1.0.2</version>
+                    <version>1.1.0-SNAPSHOT</version>
                 </plugin>
                 <plugin>
                     <groupId>com.bewsoftware.mojo</groupId>
                     <artifactId>bewsoftware-mdj-plugin</artifactId>
-                    <version>1.1.2</version>
-                </plugin>                
+                    <version>2.0.0-SNAPSHOT</version>
+                </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>3.3.0</version>
                 </plugin>
-                <plugin>                  
+                <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.6</version>
+                    <version>0.8.8</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -516,23 +515,23 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>3.1.0</version>
-                </plugin>                
+                    <version>3.2.0</version>
+                </plugin>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
-                </plugin>        
-                <plugin>         
+                    <version>3.10.1</version>
+                </plugin>
+                <plugin>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.1.2</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>3.0.0-M1</version>
+                    <version>3.0.0-M2</version>
                 </plugin>
-                <plugin>                
+                <plugin>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>3.0.0-M5</version>
+                    <version>3.0.0-M7</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-install-plugin</artifactId>
@@ -540,55 +539,47 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-invoker-plugin</artifactId>
-                    <version>3.2.1</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>3.2.2</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.2.0</version>
-                </plugin>     
-                <plugin>                
+                    <version>3.4.0</version>
+                </plugin>
+                <plugin>
                     <artifactId>maven-jxr-plugin</artifactId>
-                    <version>3.0.0</version>
-                </plugin>               
+                    <version>3.2.0</version>
+                </plugin>
                 <plugin>
                     <artifactId>maven-plugin-plugin</artifactId>
-                    <version>3.6.0</version>
+                    <version>3.6.4</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>3.1.1</version>
-                </plugin>
-                <plugin>                
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>3.0.0-M1</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>3.2.0</version>
                 </plugin>
                 <plugin>
-                    <artifactId>maven-scm-plugin</artifactId>
-                    <version>1.11.2</version>
-                </plugin>
-                <plugin>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>3.9.1</version>
-                </plugin>                
+                    <version>4.0.0-M2</version>
+                </plugin>
                 <plugin>
                     <artifactId>maven-source-plugin</artifactId>
                     <version>3.2.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M5</version>
+                    <version>3.0.0-M7</version>
                 </plugin>
             </plugins>
         </pluginManagement>
-        
+
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -637,7 +628,7 @@
         </resources>
 
         <plugins>
-            <plugin>                    
+            <plugin>
                 <groupId>com.bewsoftware.mojo</groupId>
                 <artifactId>bewsoftware-version-plugin</artifactId>
                 <executions>
@@ -645,12 +636,20 @@
                         <id>Build</id>
                         <goals>
                             <goal>build</goal>
-                        </goals>                        
+                        </goals>
                         <configuration>
                             <skip>${skip.version.build}</skip>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <showDeprecation>true</showDeprecation>
+                    <debug>true</debug>
+                </configuration>
             </plugin>
         </plugins>
     </build>
