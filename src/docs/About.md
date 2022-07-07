@@ -6,7 +6,7 @@ title: ${document.title} | About
 
 ## About : v${project.version}
 
-    Copyright (C) 2021 Bradley Willcott
+    Copyright (C) 2021-2022 Bradley Willcott
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
