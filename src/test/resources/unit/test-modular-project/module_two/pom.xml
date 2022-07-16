@@ -6,7 +6,7 @@
         <groupId>com.bewsoftware.mu.test.modular.project</groupId>
         <artifactId>POM</artifactId>
         <relativePath>../POM/pom.xml</relativePath>
-        <version>1.0.4-SNAPSHOT</version>
+        <version>1.0.5</version>
     </parent>
 
     <artifactId>module_two</artifactId>
