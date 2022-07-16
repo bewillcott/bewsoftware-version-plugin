@@ -8,6 +8,16 @@ title: ${document.title} | Configuration
 
 These settings are available for both the **build** and **release** goals.
 
+### keep
+
+To _keep_ the current version number:  
+`<keep>true</keep>`
+
+Can be useful when making a minor fix to a release version without incrementing
+the patch number. Or for testing a fix during development to see how the
+Release Build will be affected, but keeping the "-SNAPSHOT" extension in
+the version number.
+
 ### skip
 
 To _skip_ an execution set this to true:  
@@ -30,13 +40,6 @@ For example to set it to `finalBaseName`:
 
 which could then be used like this:  
 `${project.build.directory}/${finalBaseName}.jar`
-
-
-**Limitations**  
-For some reason that I have as yet been unable to fathom, when my plugin is run
-within a profile and sets the property `project.build.finalName` to a new value,
-that value is **not** available to any plugins in the same profile.  However,
-plugins in the _default_ profile are able to access the updated information.
 
 **Default:** no default.
 

@@ -2,7 +2,7 @@
  * 'bewsoftware-version-plugin' provides Maven style version number
  * incrementing.
  *
- * Copyright (C) 2021 Bradley Willcott <mailto:bw.opensource@yahoo.com>
+ * Copyright (C) 2021, 2022 Bradley Willcott <mailto:bw.opensource@yahoo.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,8 @@ import org.apache.maven.plugins.annotations.Mojo;
 import static org.apache.maven.plugins.annotations.LifecyclePhase.VALIDATE;
 
 /**
- * BuildMojo class updates the {@code project.version} text, possibly incrementing the
+ * BuildMojo class updates the {@code project.version} text, possibly
+ * incrementing the
  * patch level.
  * <p>
  * The format is: &lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;-SNAPSHOT<br>
@@ -112,14 +113,16 @@ import static org.apache.maven.plugins.annotations.LifecyclePhase.VALIDATE;
  * @author <a href="mailto:bw.opensource@yahoo.com">Bradley Willcott</a>
  *
  * @since 0.1
- * @version 1.0.2
+ * @version 1.2.0
  */
 @Mojo(name = "build", defaultPhase = VALIDATE, requiresProject = true,
-      threadSafe = false, executionStrategy = "once-per-session")
-public class BuildMojo extends AbstractVersionMojo {
+        threadSafe = false, executionStrategy = "once-per-session")
+public class BuildMojo extends AbstractVersionMojo
+{
 
     @Override
-    public void execute() throws MojoExecutionException, MojoFailureException {
+    public void execute() throws MojoExecutionException, MojoFailureException
+    {
 
         DISPLAY.level(2).println("Entry: execute()");
         run();
@@ -128,12 +131,17 @@ public class BuildMojo extends AbstractVersionMojo {
 
     @Override
     @SuppressWarnings("ValueOfIncrementOrDecrementUsed")
-    public boolean processVersion(final Version version) {
+    public boolean processVersion(final Version version)
+    {
 
         boolean changed = false;
 
-        // Should never be false
-        if (version.major != null)
+        if (keep)
+        {
+            version.processNulls();
+
+            // Should never be false
+        } else if (version.major != null)
         {
             if (version.minor == null)
             {

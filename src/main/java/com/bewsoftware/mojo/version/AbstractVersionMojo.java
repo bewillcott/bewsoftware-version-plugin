@@ -2,7 +2,7 @@
  * 'bewsoftware-version-plugin' provides Maven style version number
  * incrementing.
  *
- * Copyright (C) 2021-2022 Bradley Willcott <mailto:bw.opensource@yahoo.com>
+ * Copyright (C) 2021, 2022 Bradley Willcott <mailto:bw.opensource@yahoo.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ import static com.bewsoftware.mojo.version.Utils.updateProjectVersion;
  * @author <a href="mailto:bw.opensource@yahoo.com">Bradley Willcott</a>
  *
  * @since 0.1
- * @version 1.1.0
+ * @version 1.2.0
  */
 @SuppressWarnings("ProtectedField")
 public abstract class AbstractVersionMojo extends AbstractMojo implements Callback
@@ -73,6 +73,12 @@ public abstract class AbstractVersionMojo extends AbstractMojo implements Callba
      */
     @Parameter(defaultValue = "0")
     private int verbosity;
+
+    /**
+     * Whether or not to keep the current version number.
+     */
+    @Parameter(defaultValue = "false")
+    protected boolean keep;
 
     /**
      * The maven project.
@@ -120,6 +126,11 @@ public abstract class AbstractVersionMojo extends AbstractMojo implements Callba
         {
             DISPLAY.level(0).println("\nSkipping execution.");
             return false;
+        }
+
+        if (keep)
+        {
+            DISPLAY.level(0).println("\nKeeping current version.");
         }
 
         if (project != null)

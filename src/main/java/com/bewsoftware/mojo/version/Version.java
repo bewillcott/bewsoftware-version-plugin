@@ -2,7 +2,7 @@
  * 'bewsoftware-version-plugin' provides Maven style version number
  * incrementing.
  *
- * Copyright (C) 2021 Bradley Willcott <mailto:bw.opensource@yahoo.com>
+ * Copyright (C) 2021, 2022 Bradley Willcott <mailto:bw.opensource@yahoo.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,10 +26,11 @@ package com.bewsoftware.mojo.version;
  * @author <a href="mailto:bw.opensource@yahoo.com">Bradley Willcott</a>
  *
  * @since 0.1
- * @version 0.1
+ * @version 1.2.0
  */
 @SuppressWarnings("PublicField")
-public class Version {
+public class Version
+{
 
     /**
      * Major version number component;
@@ -54,7 +55,8 @@ public class Version {
     /**
      * Accessible only within package.
      */
-    Version() {
+    Version()
+    {
     }
 
     /**
@@ -62,13 +64,41 @@ public class Version {
      *
      * @return new version string.
      */
-    public String format() {
+    public String format()
+    {
         return String.format("%s.%s.%s%s", major, minor, patch, snapshot);
     }
 
+    /**
+     * Convert all 'null' attribute to empty strings: "".
+     */
+    public void processNulls()
+    {
+        if (major == null)
+        {
+            major = "";
+        }
+
+        if (minor == null)
+        {
+            minor = "";
+        }
+
+        if (patch == null)
+        {
+            patch = "";
+        }
+
+        if (snapshot == null)
+        {
+            snapshot = "";
+        }
+    }
+
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Version{" + "major=" + major + ", minor=" + minor + ", patch="
-               + patch + ", snapshot=" + snapshot + '}';
+                + patch + ", snapshot=" + snapshot + '}';
     }
 }
